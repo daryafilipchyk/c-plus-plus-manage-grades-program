@@ -1,0 +1,79 @@
+
+//
+//  Created by Darya Filipchyk on 3/5/21.
+//
+/* Write a C++ program that manage the student’s grades. 
+Starting with a fixed number of students (use 10 for simplicity) 
+the user will input the grades for each student. 
+The number of grades is given by the user. The grades are stored in an array. 
+Two functions are called for each student. 
+One function will give the numeric average of their grades. 
+The other function will give a letter grade to that average. 
+Grades are assigned on a 10-point spread.
+ 90-100 A
+ 80- 89 B
+ 70-79 C
+ 60-69 D
+ Below 60 F
+*/
+
+
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+int avgGrade (int myArray[], int num){
+    int sum=0;
+    for(int i=0; i<num; i++){
+        sum += myArray[i];
+        
+    }
+    return sum/num;
+}
+
+char letterGrade (int grade){
+    char yourGrade;
+    if(grade>=90 && grade <=100)
+        yourGrade = 'A';
+    else if (grade<90 && grade>=80)
+        yourGrade = 'B';
+    else if (grade<80 && grade>=70)
+        yourGrade = 'C';
+    else if (grade<70 && grade>=60)
+        yourGrade = 'D';
+    else
+        yourGrade = 'F';
+    
+    return yourGrade;
+}
+
+
+int main() {
+
+    int myArray[10];
+    cout<<"How many students do you have? (Enter a number below 10)"<<endl;
+    int num = 0;
+    cin>>num;
+    
+    int grade=0;
+    
+    cout<<"Enter each student's grade "<<endl;
+    
+    for (int i=0; i<num; i++){
+        cout<<"Grade "<<i+1<<":"<<endl;
+        cin>>grade;
+        myArray[i]=grade;
+ }
+    cout<<"The grades you entered are: ";
+    for (int i=0; i<num; i++){
+        cout<<myArray[i]<<" ";
+    }
+    cout<<""<<endl;
+    
+    
+    cout<<"Your average is: "<<avgGrade(myArray, num)<<endl;
+    cout<<"The letter grade of your average is: "<<letterGrade(avgGrade(myArray, num))<<endl;
+    
+    cout<<""<<endl;
+    return 0;
+}
